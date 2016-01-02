@@ -46,14 +46,16 @@ fi
 
 #check for file where all emails will be used to send messages
 if [ ! -f "../posting" ]; then
-  echo posting email address not configured. please set one.
+  echo posting email address not configured. all changes will be submited to all email adresies in this file
   echo echo your.email@gmail.com\> ../posting
+  echo
 fi
 
 #make sure the maintenance email is configured
 if [ ! -f "../maintenance" ]; then
   echo maintenance email address not configured. this will be used to check if the page even still exist.
   echo echo your.email@gmail.com\> ../maintenance
+  echo
   break
 fi
 
