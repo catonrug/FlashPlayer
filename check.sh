@@ -7,7 +7,7 @@ if [ $? -ne 0 ]; then
   break
 fi
 
-#it is hightly recommended to place this directory in another direcotry
+#it is highly recommended to place this directory in another directory
 deep=$(pwd | sed "s/\//\n/g" | grep -v "^$" | wc -l)
 if [ $deep -lt 4 ]; then
   echo please place this script in another directory
@@ -38,20 +38,25 @@ if [ $? -eq 0 ]; then
   break
 fi
 
+#check if Google Drive uploader program exists
+if [ ! -f "../uploader.py" ]; then
+  echo uploader.py not found. downloading now..
+  wget https://github.com/catonrug/gduploader/raw/master/uploader.py -O ../uploader.py -q
+fi
 
 #set application name based on directory name
-#this will be used for future temp direcotry, database name, google upload config, archiving
+#this will be used for future temp directory, database name, google upload config, archiving
 appname=$(pwd | sed "s/^.*\///g")
 
-#set temp direcotry in varable based on applicaition name
+#set temp directory in variable based on application name
 tmp=$(echo ../tmp/$appname)
 
-#create temp direcotry
+#create temp directory
 if [ ! -d "$tmp" ]; then
   mkdir -p "$tmp"
 fi
 
-#check if database direcotry has prepared 
+#check if database directory has prepared 
 if [ ! -d "../db" ]; then
   mkdir -p "../db"
 fi
