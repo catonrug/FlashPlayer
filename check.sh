@@ -41,7 +41,7 @@ fi
 #check if Google Drive uploader program exists
 if [ ! -f "../uploader.py" ]; then
   echo uploader.py not found. downloading now..
-  wget https://github.com/catonrug/gduploader/raw/master/uploader.py -O ../uploader.py -q
+  wget https://github.com/catonrug/gduploader/raw/4d6414047d0f78e81b390f167a8e9d9e9441325a/uploader.py -O ../uploader.py -q
 fi
 
 #check for file where all emails will be used to send messages
@@ -55,6 +55,12 @@ if [ ! -f "../maintenance" ]; then
   echo maintenance email address not configured. this will be used to check if the page even still exist.
   echo echo your.email@gmail.com\> ../maintenance
   break
+fi
+
+#check for javascript html downloader
+if [ ! -f "../html-downloader.py" ]; then
+  echo html-downloader.py not found. downloading now..
+  wget https://github.com/catonrug/html-downloader/raw/3c3fc6a5b551c94a5b528af3674ddddb5b60fec1/html-downloader.py -O ../html-downloader.py -q
 fi
 
 
