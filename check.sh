@@ -44,6 +44,20 @@ if [ ! -f "../uploader.py" ]; then
   wget https://github.com/catonrug/gduploader/raw/master/uploader.py -O ../uploader.py -q
 fi
 
+#check for file where all emails will be used to send messages
+if [ ! -f "../posting" ]; then
+  echo posting email address not configured. please set one.
+  echo echo your.email@gmail.com\> ../posting
+fi
+
+#make sure the maintenance email is configured
+if [ ! -f "../maintenance" ]; then
+  echo maintenance email address not configured. this will be used to check if the page even still exist.
+  echo echo your.email@gmail.com\> ../maintenance
+  break
+fi
+
+
 #set application name based on directory name
 #this will be used for future temp directory, database name, google upload config, archiving
 appname=$(pwd | sed "s/^.*\///g")
